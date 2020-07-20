@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partial/head %>
+</head>
+<body data-background-color="dark">
+	<div class="wrapper">
+		<% include ../partial/header %>
+
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title">Forms</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home">
+								<a href="#">
+									<i class="flaticon-home"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Forms</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Basic Form</a>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Form Elements</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+                                        <form action="/users/userupdate" method="post">
+                                        <input type="hidden" name="id" value="<%=user._id%>">
+										<div class="col-md-30 col-lg-30">
+											<div class="form-group">
+												<label for="name">User Name</label>
+												<input type="text" class="form-control" id="name" name="name" value="<%=user.name%>">
+											</div>
+											<div class="form-group">
+												<label for="email2">Email Address</label>
+												<input type="email" class="form-control" id="email" name="email" value="<%=user.email%>">
+											</div>
+											<div class="form-group">
+												<label for="password">Password</label>
+												<input type="password" class="form-control" id="password" name="password" value="<%=user.password%>">
+											</div>	
+									<button class="btn btn-success" type="submit">Update</button>
+									<button class="btn btn-danger">Cancel</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div>
+			<% include ../partial/footer %>
+		</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+	<% include ../partial/custom %>
+		<!-- End Custom template -->
+		
+	<!--   Core JS Files   -->
+	<% include ../partial/script %>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User </title>
+</head>
+<body>
+    <h1>User Update</h1>
+    <form action="/users/userupdate" method="post">
+    <input type="hidden" name="id" value="<%=user._id%>">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<%=user.name%>"><p>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" value="<%=user.email%>"><p>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" value="<%=user.password%>"><p>
+   <button type="submit" value="update">Submit</button>
+</form>
+</body>
+</html> -->

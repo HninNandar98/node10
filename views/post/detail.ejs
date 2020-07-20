@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Post Detail</h1>
+    Title : <%= post.title %><p>
+    Content : <%= post.content %><p>
+    Author Name: <%= post.author.name %><p>
+    Author Email : <%= post.author.email %><p></p>
+    <a href="/posts/update/<%=post._id%>"><button type="button">Update</button></a>
+    <button onclick="del()">Delete</button>
+    </form>
+</body>
+<script>
+    function del(){
+        var con = confirm("Are you sure for delete");
+        if(con){
+            location.href="/posts/delete/<%= post._id%>";
+        }
+    }
+</script>
+</html>

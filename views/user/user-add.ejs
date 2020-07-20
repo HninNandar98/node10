@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partial/head %>
+</head>
+<body data-background-color="dark">
+	<div class="wrapper">
+		<% include ../partial/header %>
+
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title">Forms</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home">
+								<a href="#">
+									<i class="flaticon-home"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Forms</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Basic Form</a>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Form Elements</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<form action="/users/useradd" method="post" id="myForm">
+										<div class="col-md-30 col-lg-30">
+											<div class="form-group">
+												<label for="name">User Name</label>
+												<input type="text" class="form-control" id="name" name="name" placeholder="Password">
+											</div>
+											<div class="form-group">
+												<label for="email2">Email Address</label>
+												<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+											</div>
+											<div class="form-group">
+												<label for="password">Password</label>
+												<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+											</div>	
+									<button class="btn btn-success" type="submit">Submit</button>
+									<button class="btn btn-danger">Cancel</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div>
+			<% include ../partial/footer %>
+		</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+	<% include ../partial/custom %>
+		<!-- End Custom template -->
+		
+	<!--   Core JS Files   -->
+	<% include ../partial/script %>
+</body>
+<script src="/javascripts/jquery-3.5.1.js"></script>
+	<script src="/javascripts/jquery.validate.min.js"></script>
+      <script>
+		  $("#email").blur(function (){
+    var datap = { email: $("#email").val()};
+    if (datap.email != ""){
+    $.ajax({
+        url: "/users/emaildu",
+        data : datap,
+        type: "POST",
+        success: function (result){
+            if(result.status){
+                alert("Duplicate Email or  Invalid Email");
+                $("#email").val("");
+                $("#email").focus();
+            }
+        }
+    });
+}
+});
+      $("#myForm").validate({
+          rules: {
+              name:{
+                  required:true,
+                  minlength:5,
+              },
+              email:{
+                  required:true,
+                  emailExt:true,
+              },
+              password:{
+                  required:true,
+                  minlength:8,
+                  pwcheck:true,
+              },
+          },
+          message:{
+              name:{
+                  required:"Name fields need to insert",
+              },
+              email:{
+                  required:"Email fields need to insert",
+              },
+              password:{
+                  required:"Password fields need to insert",
+                  pwcheck:"Please enter 1 uppercase 1 lowercase and 1 digit",
+              },
+          },
+      });
+      $.validator.addMethod("pwcheck", function(value) {
+   return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+       && /[a-z]/.test(value) // has a lowercase letter
+       && /\d/.test(value) // has a digit
+});
+jQuery.validator.addMethod("emailExt", function(value, element, param) {
+    return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
+},'Your E-mail is wrong');
+</script>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Add</title>
+</head>
+<body>
+    <h1>User Add</h1>
+    <form action="/users/useradd" method="post" id="myForm">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name"><p>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email"><p>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password"><p>
+    <button type="submit">Add</button>
+</form>
+</body>
+      <script src="/javascripts/jquery-3.5.1.js"></script>
+      <script src="/javascripts/jquery.validate.min.js"></script>
+      <script>
+      $("#myForm").validate({
+          rules: {
+              name:{
+                  required:true,
+                  minlength:5,
+              },
+              email:{
+                  required:true,
+                  emailExt:true,
+              },
+              password:{
+                  required:true,
+                  minlength:8,
+                  pwcheck:true,
+              },
+          },
+          message:{
+              name:{
+                  required:"Name fields need to insert",
+              },
+              email:{
+                  required:"Email fields need to insert",
+              },
+              password:{
+                  required:"Password fields need to insert",
+                  pwcheck:"Please enter 1 uppercase 1 lowercase and 1 digit",
+              },
+          },
+      });
+      $.validator.addMethod("pwcheck", function(value) {
+   return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+       && /[a-z]/.test(value) // has a lowercase letter
+       && /\d/.test(value) // has a digit
+});
+jQuery.validator.addMethod("emailExt", function(value, element, param) {
+    return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
+},'Your E-mail is wrong');
+</script>
+</html> -->

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partial/head %>
+</head>
+<body data-background-color="dark">
+	<div class="wrapper">
+		<% include ../partial/header %>
+
+		<!-- Sidebar -->
+		<% include ../partial/sidebar %>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title">Forms</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home">
+								<a href="#">
+									<i class="flaticon-home"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Forms</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Basic Form</a>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Form Elements</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+                                        <div class="col-md-2"></div>
+										<div class="col-md-8">
+                                            <div class="card card-profile">
+                                                <div class="card-header" style="background-image: url('/assets/img/blogpost.jpg')">
+                                                    <div class="profile-picture">
+                                                        <div class="avatar avatar-xl">
+                                                            <img src="/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="user-profile text-center">
+                                                        <div class="name"><%= user.name %></div>
+                                                        <div class="job"><%= user.email %></div>
+                                                        <div class="desc">A man who hates loneliness</div>
+                                                        <div class="social-media">
+                                                            <a class="btn btn-info btn-twitter btn-sm btn-link" href="#"> 
+                                                                <span class="btn-label just-icon"><i class="flaticon-twitter"></i> </span>
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm btn-link" rel="publisher" href="#"> 
+                                                                <span class="btn-label just-icon"><i class="flaticon-google-plus"></i> </span> 
+                                                            </a>
+                                                            <a class="btn btn-primary btn-sm btn-link" rel="publisher" href="#"> 
+                                                                <span class="btn-label just-icon"><i class="flaticon-facebook"></i> </span> 
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm btn-link" rel="publisher" href="#"> 
+                                                                <span class="btn-label just-icon"><i class="flaticon-dribbble"></i> </span> 
+                                                            </a>
+                                                        </div>
+                                                        <div class="view-profile">
+                                                            <a href="#" class="btn btn-secondary btn-block">View Full Profile</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div>
+			<% include ../partial/footer %>
+		</div>
+		
+		<!-- Custom template | don't include it in your project! -->
+	<% include ../partial/custom %>
+		<!-- End Custom template -->
+		
+	<!--   Core JS Files   -->
+	<% include ../partial/script %>
+</body>
+</html>
+
+
+<!-- !-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>User Detail</h1>
+    Name: <%= user.name %><p>
+    Email : <%= user.email %><p>
+    <a href="/users/userupdate/<%=user._id%>"><button type="button">Update</button></a>
+    <button onclick="del()">Delete</button>
+    </form>
+</body>
+<script>
+    function del(){
+        var con = confirm("Are you sure for delete");
+        if(con){
+            location.href="/users/userdelete/<%= user._id%>";
+        }
+    }
+</script>
+</html> --> -->
