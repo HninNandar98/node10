@@ -4,16 +4,20 @@ var bcrypt = require('bcryptjs');
 var UserSchema = new Schema({
     name :{
         type:String,
-        required:true
+        required:true,
     },
     email:{
         type:String,
-        required:true
+        required:true,
     },
     password:{
         type:String,
-        required:true
-    }
+        required:true,
+    },
+    imgUrl:{
+        type:String,
+        required:true,
+    },
 });
 
 UserSchema.pre("save",function ( next ){

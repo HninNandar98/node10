@@ -9,6 +9,9 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
+var apiUsersRouter = require('./api/routes/users');
+var apiAdminsRouter = require('./api/routes/admins');
+var apiPostsRouter = require('./api/routes/posts');
 
 var app = express();
 
@@ -29,10 +32,13 @@ app.use(
   })
 );
 
-mongoose.connect('mongodb://127.0.0.1/node10');
+mongoose.connect('mongodb+srv://hninwai98:hnin1998@node10.e16mf.mongodb.net/node10db?retryWrites=true&w=majority');
 var db = mongoose.connection;
 db.on('error',console.error.bind(console,'MongoseDB connection error:'));
 
+app.use('/api/posts',apiPostsRouter);
+app.use('/api/users',apiUsersRouter);
+app.use('/api/',apiAdminsRouter);
 app.use('/', indexRouter);
 app.use(function(req,res,next){
   if (req.session.user){
